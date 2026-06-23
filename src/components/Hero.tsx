@@ -1,110 +1,153 @@
-import { useState, useRef } from 'react';
-import myPhoto from '../assets/my-photo.png';
+import myPhoto from '../assets/my-profile.png';
 
 export default function Hero() {
-  const [rotate, setRotate] = useState({ x: 0, y: 0 });
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  // 3D Card Hover Perspective Logic
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!cardRef.current) return;
-    const card = cardRef.current;
-    const box = card.getBoundingClientRect();
-    const x = e.clientX - box.left - box.width / 2;
-    const y = e.clientY - box.top - box.height / 2;
-    setRotate({ x: -y / 10, y: x / 10 });
-  };
-
-  const handleMouseLeave = () => {
-    setRotate({ x: 0, y: 0 });
-  };
-
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center bg-slate-950 text-white pt-16 relative overflow-hidden"
+      className="relative min-h-screen flex items-center bg-slate-950 text-white pt-24 pb-16 overflow-hidden"
     >
-      {/* Background Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-blue-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+      {/* 1. Grid Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff09_1px,transparent_1px),linear-gradient(to_bottom,#ffffff09_1px,transparent_1px)] bg-size-[90px_90px] z-0"></div>
 
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10 w-full">
-        {/* Left Side: Content */}
-        <div className="space-y-6 text-left">
-          <div className="inline-flex items-center gap-2 bg-slate-900 border border-slate-800 px-4 py-1.5 rounded-full">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
-            </span>
-            <p className="text-xs font-mono text-slate-400 tracking-wider">
-              Hello World!
-            </p>
-          </div>
+      {/* 2. Floating Background Shapes */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="animate-float-shape-1 absolute top-28 left-10 md:left-24 w-12 h-12 border-2 border-blue-400/40 rounded-xl"></div>
+        <div className="animate-float-shape-2 absolute bottom-24 left-16 w-8 h-8 border border-teal-400/30 rounded-sm rotate-12"></div>
+        <div className="animate-float-shape-3 absolute top-20 left-1/2 w-4 h-4 rounded-full bg-purple-500/30"></div>
+        <div className="animate-float-shape-2 absolute top-40 right-20 lg:right-96 w-6 h-6 border border-purple-400/40 rotate-45"></div>
+        <div className="animate-float-shape-1 absolute bottom-28 right-12 md:right-36 w-16 h-16 border-2 border-teal-400/40 rounded-full"></div>
+      </div>
 
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-none">
-            Building Web Apps, <br />
-            <span className="bg-linear-to-r from-teal-400 to-blue-500 bg-clip-text text-transparent">
-              One Stack at a time.
-            </span>
-          </h1>
+      {/* Ambient Lighting Backdrop */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-blue-500/5 blur-[130px] rounded-full pointer-events-none"></div>
 
-          <p className="text-slate-400 text-lg max-w-xl leading-relaxed">
-            A passionate Full-stack Web Developer specializing in the MERN stack
-            and Next.js to craft clean, responsive, and delightful digital
-            experiences.
-          </p>
-
-          <div className="flex gap-4 pt-2">
-            <a
-              href="#projects"
-              className="bg-linear-to-r from-teal-500 to-blue-600 hover:opacity-90 text-white px-6 py-3 rounded-xl font-medium shadow-md transition-all"
-            >
-              View Work
-            </a>
-            <a
-              href="mailto:paingzinyemaung.pgo@gmail.com"
-              className="border border-slate-800 hover:bg-slate-900 text-slate-300 px-6 py-3 rounded-xl font-medium transition-all"
-            >
-              Contact Me
-            </a>
-          </div>
-        </div>
-
-        {/* Right Side: 3D Interactive Card */}
-        <div className="flex justify-center md:justify-end items-center">
-          <div
-            ref={cardRef}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{
-              transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
-              transition: rotate.x === 0 ? 'transform 0.5s ease' : 'none',
-            }}
-            className="relative h-105 w-[320px] rounded-2xl p-0.5 bg-linear-to-br from-teal-500 via-slate-800 to-blue-600 animate-border-glow shadow-2xl cursor-pointer overflow-hidden group"
-          >
-            {/* Card Inner Context */}
-            <div className="w-full h-full bg-slate-950/90 rounded-2xl p-6 flex flex-col justify-between items-center relative overflow-hidden">
-              {/* Decorative Mesh Background */}
-              <div className="absolute inset-0 bg-radial-to-b from-blue-500/10 to-transparent opacity-50"></div>
-
-              <div className="relative w-48 h-48 mt-4 rounded-full overflow-hidden border-4 border-slate-900 z-10 shadow-lg group-hover:scale-105 transition-transform duration-300">
-                <img
-                  src={myPhoto}
-                  alt="Paing Zin"
-                  className="w-full h-full object-cover object-top"
-                />
+      {/* Main Content Layout */}
+      <div className="max-w-6xl mx-auto px-6 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* --- ဘယ်ဘက်ခြမ်း Column --- */}
+          <div className="lg:col-span-7 text-center lg:text-left space-y-6 max-w-2xl mx-auto lg:mx-0">
+            {/* Avatar & Badge Section */}
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-5 mb-10">
+              {/* Profile Image with Dynamic Interactive Hover */}
+              <div className="relative group/avatar cursor-pointer">
+                <div className="absolute inset-0 rounded-full bg-linear-to-tr from-blue-500 to-teal-400 opacity-40 blur-sm group-hover/avatar:opacity-80 group-hover/avatar:scale-110 transition-all duration-300"></div>
+                <div className="relative w-20 h-20 rounded-full p-0.5 bg-linear-to-tr from-blue-500 to-teal-400 shadow-xl transition-all duration-300 transform group-hover/avatar:scale-110 group-hover/avatar:rotate-6 active:scale-95">
+                  <div className="w-full h-full rounded-full overflow-hidden bg-slate-900">
+                    <img
+                      src={myPhoto}
+                      alt="Paing Zin"
+                      className="w-full h-full object-cover object-top filter contrast-105"
+                    />
+                  </div>
+                </div>
+                <span className="absolute bottom-1 right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-slate-950 rounded-full"></span>
               </div>
 
-              <div className="w-full text-center space-y-2 z-10">
-                <h3 className="text-xl font-bold tracking-wide group-hover:text-teal-400 transition-colors">
-                  Paing Zin Ye Maung
-                </h3>
-                <p className="text-xs font-mono text-slate-400">
-                  MERN & Next.js Developer
-                </p>
-                <div className="flex justify-center gap-2 pt-2 text-xs font-mono text-slate-500">
-                  <span>● Interactive</span>
-                  <span>● Responsive</span>
+              {/* Text Badge info */}
+              <div className="flex flex-col items-center sm:items-start font-mono">
+                <span className="border border-blue-500/30 bg-blue-500/5 px-3 py-1 rounded-full text-xs font-semibold text-blue-400 tracking-wide mb-1">
+                  Hello World 👋
+                </span>
+                <span className="text-xs text-slate-500">
+                  Welcome to my space
+                </span>
+              </div>
+            </div>
+
+            {/* Main Heading Title */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-slate-100">
+              Building Web Apps, <br className="hidden sm:block" />
+              <span className="bg-linear-to-r from-blue-400 via-teal-400 to-indigo-400 bg-clip-text text-transparent">
+                One Stack at a time.
+              </span>
+            </h1>
+
+            {/* Description Paragraph */}
+            <p className="text-slate-400 text-base sm:text-lg leading-relaxed font-normal max-w-xl mx-auto lg:mx-0">
+              A passionate Full-stack Web Developer specializing in the MERN
+              stack and Next.js to craft clean, responsive, and delightful
+              digital experiences.
+            </p>
+
+            {/* Buttons (View Projects & Download CV Locked) */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+              <a
+                href="#projects"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-8 py-3 rounded-xl transition-all shadow-md shadow-blue-600/10 text-center"
+              >
+                View Projects
+              </a>
+              {/* Disabled Download CV Button */}
+              <button
+                disabled
+                className="border border-slate-800/60 bg-slate-900/40 text-slate-500 font-medium px-8 py-3 rounded-xl opacity-50 cursor-not-allowed text-center"
+              >
+                Download CV
+              </button>
+            </div>
+          </div>
+
+          {/* --- ညာဘက်ခြမ်း Column (IDE Windows Mockup) --- */}
+          {/* Hover လုပ်လိုက်လျှင် အရောင်မထွက်ဘဲ အပေါ်သို့ ကြွတက်သွားမည့် အပိုင်း */}
+          <div className="lg:col-span-5 w-full max-w-md mx-auto transition-all duration-300 transform hover:-translate-y-2">
+            <div className="w-full bg-slate-900/50 border border-slate-800/80 rounded-2xl shadow-2xl backdrop-blur-sm overflow-hidden font-mono text-xs sm:text-sm">
+              {/* Window Header */}
+              <div className="bg-slate-950/80 px-4 py-3 flex items-center justify-between border-b border-slate-900">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-3 h-3 rounded-full bg-red-500/70"></span>
+                  <span className="w-3 h-3 rounded-full bg-yellow-500/70"></span>
+                  <span className="w-3 h-3 rounded-full bg-green-500/70"></span>
                 </div>
+                <span className="text-slate-500 text-xs font-medium">
+                  developer.tsx
+                </span>
+                <span className="w-4"></span>
+              </div>
+
+              {/* Code Contents */}
+              <div className="p-5 space-y-2.5 text-left text-slate-300">
+                <div>
+                  <span className="text-purple-400">const</span>{' '}
+                  <span className="text-blue-400">developer</span> = &#123;
+                </div>
+                <div className="pl-4">
+                  <span className="text-slate-400">name:</span>{' '}
+                  <span className="text-teal-300">'Paing Zin Ye Maung'</span>,
+                </div>
+                <div className="pl-4">
+                  <span className="text-slate-400">role:</span>{' '}
+                  <span className="text-teal-300">'Full-Stack Web Dev'</span>,
+                </div>
+                <div className="pl-4">
+                  <span className="text-slate-400">coreStack:</span>{' '}
+                  <span className="text-slate-400">[</span>
+                </div>
+                <div className="pl-8 text-amber-400">
+                  'MongoDB', 'Express', 'React', 'Node.js'
+                </div>
+                <div className="pl-4">
+                  <span className="text-slate-400">],</span>
+                </div>
+                <div className="pl-4">
+                  <span className="text-slate-400">framework:</span>{' '}
+                  <span className="text-teal-300">'Next.js'</span>,
+                </div>
+                <div className="pl-4">
+                  <span className="text-slate-400">uiKit:</span>{' '}
+                  <span className="text-teal-300">'Tailwind CSS v4'</span>
+                </div>
+                <div>&#125;;</div>
+
+                <div className="pt-4 text-slate-500">
+                  // Outputting environment status...
+                </div>
+                <div className="text-emerald-400 flex items-center gap-2">
+                  <span>&gt; ready</span>
+                  <span className="text-slate-300">
+                    compiled successfully on port 5173
+                  </span>
+                </div>
+                <div className="w-2 h-4 bg-blue-400 animate-pulse inline-block mt-1"></div>
               </div>
             </div>
           </div>

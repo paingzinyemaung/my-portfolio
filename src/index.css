@@ -4,33 +4,41 @@ html {
   scroll-behavior: smooth;
 }
 
-/* @import "tailwindcss"; */
+@import 'tailwindcss';
 
-/* Concept A အတွက် Typing & Floating Effect */
-@keyframes floating {
+/* --- Floating Keyframes (Aster Style Modified) --- */
+@keyframes floatSlow {
   0%,
   100% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.25;
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-25px) rotate(90deg);
+    opacity: 0.5;
   }
-}
-.animate-floating {
-  animation: floating 4s ease-in-out infinite;
 }
 
-/* Concept B အတွက် Moving Border Glow Effect */
-@keyframes borderGlow {
+@keyframes floatFast {
   0%,
   100% {
-    background-position: 0% 50%;
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.2;
   }
   50% {
-    background-position: 100% 50%;
+    transform: translateY(20px) rotate(-45deg);
+    opacity: 0.45;
   }
 }
-.animate-border-glow {
-  background-size: 200% 200%;
-  animation: borderGlow 4s linear infinite;
+
+.animate-float-shape-1 {
+  animation: floatSlow 10s ease-in-out infinite;
+}
+
+.animate-float-shape-2 {
+  animation: floatFast 8s ease-in-out infinite;
+}
+
+.animate-float-shape-3 {
+  animation: floatSlow 12s ease-in-out infinite 3s;
 }

@@ -14,7 +14,7 @@ export default function Skills() {
     <section id="skills" className="py-20 bg-slate-950 text-white px-6">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent inline-block">
+          <h2 className="text-3xl font-bold bg-linear-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent inline-block">
             My Tech Stack
           </h2>
           <p className="text-slate-400 mt-2">

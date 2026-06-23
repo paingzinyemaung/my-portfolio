@@ -30,7 +30,7 @@ export default function Projects() {
     <section id="projects" className="py-20 bg-slate-900 text-white px-6">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent inline-block">
+          <h2 className="text-3xl font-bold bg-linear-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent inline-block">
             Featured Projects
           </h2>
           <p className="text-slate-400 mt-2">
