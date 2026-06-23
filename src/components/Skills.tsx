@@ -1,37 +1,37 @@
 export default function Skills() {
-  const skills = [
-    'React 19',
-    'Tailwind CSS',
-    'TypeScript',
-    'JavaScript (ES6+)',
-    'Vite',
-    'Git & GitHub',
-    'HTML5 & CSS3',
-    'Responsive Design',
-  ];
-
   return (
-    <section id="skills" className="py-20 bg-slate-950 text-white px-6">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold bg-linear-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent inline-block">
-            My Tech Stack
+    <section
+      id="skills"
+      className="scroll-mt-24 py-24 bg-slate-950 text-white relative"
+    >
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <div className="mb-14">
+          <h2 className="text-3xl font-bold font-mono mb-3 text-slate-100 tracking-tight">
+            <span className="text-teal-400">&lt;</span> My Tech Stack{' '}
+            <span className="text-teal-400">/&gt;</span>
           </h2>
-          <p className="text-slate-400 mt-2">
+          <p className="text-slate-500 text-sm sm:text-base">
             Technologies I use to bring ideas to life.
           </p>
         </div>
 
-        {/* Responsive Grid System */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {skills.map((skill, index) => (
+        {/* Skills Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono text-sm">
+          {[
+            'React 19',
+            'Tailwind CSS',
+            'TypeScript',
+            'JavaScript (ES6+)',
+            'Vite',
+            'Git & GitHub',
+            'HTML5 & CSS3',
+            'Responsive Design',
+          ].map((skill) => (
             <div
-              key={index}
-              className="bg-slate-900 border border-slate-800 p-4 rounded-xl text-center hover:border-blue-500/50 hover:bg-slate-900/50 transition duration-300 group"
+              key={skill}
+              className="bg-slate-900/30 border border-slate-900/60 p-4 rounded-xl text-slate-300 hover:text-teal-400 hover:border-teal-500/40 transition-all duration-300 shadow-sm cursor-default"
             >
-              <p className="text-slate-300 font-medium group-hover:text-blue-400 transition">
-                {skill}
-              </p>
+              {skill}
             </div>
           ))}
         </div>
