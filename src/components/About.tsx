@@ -14,8 +14,8 @@ export default function About() {
           {/* Main Paragraphs */}
           <div className="lg:col-span-7 space-y-6 text-slate-400 text-base sm:text-lg leading-relaxed">
             <p>
-              I am a passionate frontend developer based in Myanmar. My journey
-              into web development started with a curiosity about how beautiful
+              I am a passionate web developer based in Myanmar. My journey into
+              web development started with a curiosity about how beautiful
               websites are crafted.
             </p>
             <p>
@@ -26,8 +26,10 @@ export default function About() {
           </div>
 
           {/* Philosophy Card */}
-          <div className="lg:col-span-5 bg-slate-900/20 border border-slate-900/80 p-6 rounded-2xl backdrop-blur-md relative group">
-            <div className="absolute -left-0.5 top-6 w-1 h-12 bg-blue-500 rounded-r-md"></div>
+          <div className="lg:col-span-5 bg-slate-900/50 border border-slate-800 p-6 rounded-2xl backdrop-blur-md relative group transition-all duration-300 hover:-translate-y-2 hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/5">
+            {/* Hover လုပ်လျှင် လင်းလာမည့် လက်ရာမြောက် Left Indicator Line */}
+            <div className="absolute -left-0.5 top-6 w-1 h-12 bg-blue-500 rounded-r-md group-hover:bg-blue-400 group-hover:h-16 transition-all duration-300"></div>
+
             <h3 className="text-xl font-bold text-blue-400 mb-3 font-mono pl-2">
               My Philosophy
             </h3>
