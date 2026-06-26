@@ -28,7 +28,7 @@ Follow these steps to run the project locally on your machine:
 
 ```bash
 # 1. Clone the repository
-git clone [https://github.com/paingzinyemaung/my-portfolio.git](https://github.com/paingzinyemaung/my-portfolio.git)
+git clone [https://github.com/paingzinyemaung/your-repo-name.git](https://github.com/paingzinyemaung/your-repo-name.git)
 cd your-repo-name
 
 # 2. Install dependencies
