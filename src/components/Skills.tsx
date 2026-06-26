@@ -18,13 +18,13 @@ export default function Skills() {
         {/* Skills Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono text-sm">
           {[
-            'React 19',
-            'Tailwind CSS',
-            'TypeScript',
-            'JavaScript (ES6+)',
-            'Vite',
-            'Git & GitHub',
             'HTML5 & CSS3',
+            'JavaScript (ES6+)',
+            'TypeScript',
+            'Tailwind CSS',
+            'Vite',
+            'React 19',
+            'Git & GitHub',
             'Responsive Design',
           ].map((skill) => (
             <div

@@ -4,25 +4,25 @@ export default function Projects() {
       title: 'Weather Forecast Application',
       description:
         'A real-time weather app fetching data from a weather API, showing 24-hour forecasts and current weather conditions.',
-      tags: ['JavaScript', 'HTML/CSS', 'WeatherAPI'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
+      tags: ['JavaScript', 'WeatherAPI'],
+      github: 'https://github.com/paingzinyemaung/weather-app',
+      demo: 'https://weather-app-by-liampai.vercel.app/',
     },
     {
-      title: 'QR Code Generator & Scanner',
+      title: 'QR Code Generator',
       description:
-        'A handy web tool that allows users to instantly generate QR codes from text/URLs and scan them using the device camera.',
-      tags: ['JavaScript', 'Web API', 'Tailwind'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
+        'A handy web tool that allows users to instantly generate QR codes from text/URLs.',
+      tags: ['JavaScript', 'Web API'],
+      github: 'https://github.com/paingzinyemaung/qr-code-generator',
+      demo: 'https://qr-code-generator-by-liampai.vercel.app/',
     },
     {
       title: 'Network Status Monitor',
       description:
         'An internet connectivity monitoring tool utilizing AJAX to detect online/offline status and notify users instantly.',
-      tags: ['React', 'AJAX', 'TypeScript'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
+      tags: ['JavaScript', 'AJAX'],
+      github: 'https://github.com/paingzinyemaung/check-network-status',
+      demo: 'https://check-network-status.vercel.app/',
     },
   ];
 
