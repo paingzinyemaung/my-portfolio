@@ -1,6 +1,14 @@
 export default function Projects() {
   const projectList = [
     {
+      title: 'Grocery Shopping List Application',
+      description:
+        'A responsive grocery shopping list application featuring Local Storage, Supabase authentication, and family account capabilities, styled with Tailwind CSS.',
+      tags: ['React', 'TypeScript', 'Tailwind CSS', 'Supabase'],
+      github: 'https://github.com/paingzinyemaung/grocery-shopping-list',
+      demo: 'https://shopping-lst.vercel.app/',
+    },
+    {
       title: 'Weather Forecast Application',
       description:
         'A real-time weather app fetching data from a weather API, showing 24-hour forecasts and current weather conditions.',
@@ -15,6 +23,14 @@ export default function Projects() {
       tags: ['JavaScript', 'Web API'],
       github: 'https://github.com/paingzinyemaung/qr-code-generator',
       demo: 'https://qr-code-generator-by-liampai.vercel.app/',
+    },
+    {
+      title: 'Todo App',
+      description:
+        'A responsive task management application built with React, TypeScript, Vite, and Tailwind CSS, featuring local storage persistence.',
+      tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+      github: 'https://github.com/paingzinyemaung/todo-app',
+      demo: 'https://todo-lst.vercel.app/',
     },
     {
       title: 'Network Status Monitor',
