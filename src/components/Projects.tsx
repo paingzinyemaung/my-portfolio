@@ -1,46 +1,28 @@
+import { useState, useEffect } from 'react';
+
 export default function Projects() {
-  const projectList = [
-    {
-      title: 'Grocery Shopping List Application',
-      description:
-        'A responsive grocery shopping list application featuring Local Storage, Supabase authentication, and family account capabilities, styled with Tailwind CSS.',
-      tags: ['React', 'TypeScript', 'Tailwind CSS', 'Supabase'],
-      github: 'https://github.com/paingzinyemaung/grocery-shopping-list',
-      demo: 'https://shopping-lst.vercel.app/',
-    },
-    {
-      title: 'Weather Forecast Application',
-      description:
-        'A real-time weather app fetching data from a weather API, showing 24-hour forecasts and current weather conditions.',
-      tags: ['JavaScript', 'WeatherAPI'],
-      github: 'https://github.com/paingzinyemaung/weather-app',
-      demo: 'https://weather-app-by-liampai.vercel.app/',
-    },
-    {
-      title: 'QR Code Generator',
-      description:
-        'A handy web tool that allows users to instantly generate QR codes from text/URLs.',
-      tags: ['JavaScript', 'Web API'],
-      github: 'https://github.com/paingzinyemaung/qr-code-generator',
-      demo: 'https://qr-code-generator-by-liampai.vercel.app/',
-    },
-    {
-      title: 'Todo App',
-      description:
-        'A responsive task management application built with React, TypeScript, Vite, and Tailwind CSS, featuring local storage persistence.',
-      tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
-      github: 'https://github.com/paingzinyemaung/todo-app',
-      demo: 'https://todo-lst.vercel.app/',
-    },
-    {
-      title: 'Network Status Monitor',
-      description:
-        'An internet connectivity monitoring tool utilizing AJAX to detect online/offline status and notify users instantly.',
-      tags: ['JavaScript', 'AJAX'],
-      github: 'https://github.com/paingzinyemaung/check-network-status',
-      demo: 'https://check-network-status.vercel.app/',
-    },
-  ];
+  const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // GitHub API မှ သင့်အကောင့်ရှိ Public Repositories များကို လှမ်းဆွဲမည်
+    fetch('https://api.github.com/users/paingzinyemaung/repos?sort=updated')
+      .then((res) => res.json())
+      .then((data) => {
+        // 'portfolio' ဆိုတဲ့ topic ထည့်ထားသော repo များကိုသာ ရွေးထုတ်မည်
+        const filteredRepos = data.filter(
+          (repo: any) =>
+            repo.topics &&
+            repo.topics.some((t: string) => t.toLowerCase() === 'portfolio'),
+        );
+        setRepos(filteredRepos);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error('Error fetching GitHub repos:', err);
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <section id="projects" className="py-20 bg-slate-900 text-white px-6">
@@ -50,57 +32,102 @@ export default function Projects() {
             Featured Projects
           </h2>
           <p className="text-slate-400 mt-2">
-            A showcase of some of my recent development work.
+            A showcase of my recent development work from GitHub.
           </p>
         </div>
 
-        {/* Responsive Grid System for Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projectList.map((project, index) => (
-            <div
-              key={index}
-              className="bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col justify-between"
-            >
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-100 mb-3 hover:text-blue-400 transition cursor-pointer">
-                  {project.title}
-                </h3>
-                <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                  {project.description}
-                </p>
-                {/* Tech Stack Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map((tag, tIndex) => (
-                    <span
-                      key={tIndex}
-                      className="text-xs font-semibold bg-slate-900 text-blue-400 px-3 py-1 rounded-full border border-slate-800"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
+        {loading ? (
+          <p className="text-center text-slate-400">
+            Loading projects from GitHub...
+          </p>
+        ) : repos.length === 0 ? (
+          <p className="text-center text-slate-400">
+            No projects found with 'portfolio' topic on GitHub yet.
+          </p>
+        ) : (
+          /* Responsive Grid System for Cards */
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {repos.map((repo: any) => {
+              // Topics များကို lowercase ပြောင်းပြီး Duplicate များ နှင့် repo.language နှင့်တူသည်များကိုပါ ဖယ်ထုတ်ခြင်း
+              const rawTopics = (repo.topics as string[]) || [];
+              const repoLang = repo.language ? repo.language.toLowerCase() : '';
 
-              {/* Action Buttons */}
-              <div className="p-6 pt-0 flex gap-4 text-sm font-medium border-t border-slate-900/50 mt-auto">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  className="text-slate-300 hover:text-white flex items-center gap-1 transition"
+              const uniqueTopicsMap = new Map();
+              rawTopics.forEach((t) => {
+                const lower = t.toLowerCase();
+                // 'portfolio' ကိုလည်းဖြုတ်မည်၊ repo.language နဲ့တူတာကိုလည်း ဖြုတ်မည်
+                if (
+                  lower !== 'portfolio' &&
+                  lower !== repoLang &&
+                  !uniqueTopicsMap.has(lower)
+                ) {
+                  uniqueTopicsMap.set(lower, t);
+                }
+              });
+
+              const uniqueTopics = Array.from(uniqueTopicsMap.values()).slice(
+                0,
+                4,
+              );
+
+              return (
+                <div
+                  key={repo.id}
+                  className="bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col justify-between"
                 >
-                  Code ↗
-                </a>
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  className="text-blue-400 hover:text-blue-300 flex items-center gap-1 transition"
-                >
-                  Live Demo ↗
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-slate-100 mb-3 hover:text-blue-400 transition cursor-pointer">
+                      {repo.name}
+                    </h3>
+                    <p className="text-slate-400 text-sm leading-relaxed mb-4">
+                      {repo.description ||
+                        'No description provided for this repository.'}
+                    </p>
+
+                    {/* Tech Stack Tags (Language & Topics) */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {repo.language && (
+                        <span className="text-xs font-semibold bg-blue-900/20 text-blue-400 px-3 py-1 rounded-full border border-blue-800/30">
+                          {repo.language}
+                        </span>
+                      )}
+                      {uniqueTopics.map((topic: any, tIndex: number) => (
+                        <span
+                          key={tIndex}
+                          className="text-xs font-semibold bg-slate-800 text-teal-400 px-3 py-1 rounded-full border border-slate-700/50"
+                        >
+                          {topic}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="p-6 pt-0 flex gap-4 text-sm font-medium border-t border-slate-900/50 mt-auto">
+                    <a
+                      href={repo.html_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-slate-300 hover:text-white flex items-center gap-1 transition"
+                    >
+                      Code ↗
+                    </a>
+                    {repo.homepage && (
+                      <a
+                        href={repo.homepage}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-300 flex items-center gap-1 transition"
+                      >
+                        Live Demo ↗
+                      </a>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </section>
   );
