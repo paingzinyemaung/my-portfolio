@@ -2,12 +2,12 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="bg-slate-950 text-slate-400 py-12 border-t border-slate-900 px-6"
+      className="bg-transparent text-slate-400 py-12 border-t border-slate-800/80 px-6 relative"
     >
       <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div>
           <h3 className="text-lg font-bold text-slate-200">Get In Touch</h3>
-          <p className="text-sm mt-1">
+          <p className="text-sm mt-1 text-slate-400">
             Let's collaborate and build something amazing together.
           </p>
         </div>
@@ -41,7 +41,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="text-center text-xs text-slate-600 mt-8 border-t border-slate-900 pt-6">
+      <div className="text-center text-xs text-slate-500 mt-8 border-t border-slate-800/50 pt-6">
         <p>© 2026 Paing Zin Ye Maung. All rights reserved.</p>
       </div>
     </footer>

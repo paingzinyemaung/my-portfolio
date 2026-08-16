@@ -4,9 +4,18 @@ html {
   scroll-behavior: smooth;
 }
 
-@import 'tailwindcss';
+/* --- Global Dark Background & Grid Lines --- */
+body {
+  background-color: #050714; /* အပြာနက်ရောင် background */
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed; /* Scroll ဆွဲလျှင် Grid ငြိမ်နေစေရန် */
+  color: #ffffff;
+}
 
-/* --- Floating Keyframes (Aster Style Modified) --- */
+/* --- Floating Keyframes (Style Modified) --- */
 @keyframes floatSlow {
   0%,
   100% {

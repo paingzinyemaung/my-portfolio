@@ -25,7 +25,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="py-20 bg-slate-900 text-white px-6">
+    <section id="projects" className="py-20 bg-transparent text-white px-6">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold bg-linear-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent inline-block">
@@ -73,7 +73,7 @@ export default function Projects() {
               return (
                 <div
                   key={repo.id}
-                  className="bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col justify-between"
+                  className="bg-slate-900/50 backdrop-blur-md border border-slate-800/80 rounded-2xl overflow-hidden shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col justify-between"
                 >
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-slate-100 mb-3 hover:text-blue-400 transition cursor-pointer">
@@ -87,14 +87,14 @@ export default function Projects() {
                     {/* Tech Stack Tags (Language & Topics) */}
                     <div className="flex flex-wrap gap-2 mb-6">
                       {repo.language && (
-                        <span className="text-xs font-semibold bg-blue-900/20 text-blue-400 px-3 py-1 rounded-full border border-blue-800/30">
+                        <span className="text-xs font-semibold bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full border border-blue-800/40">
                           {repo.language}
                         </span>
                       )}
                       {uniqueTopics.map((topic: any, tIndex: number) => (
                         <span
                           key={tIndex}
-                          className="text-xs font-semibold bg-slate-800 text-teal-400 px-3 py-1 rounded-full border border-slate-700/50"
+                          className="text-xs font-semibold bg-slate-800/70 text-teal-400 px-3 py-1 rounded-full border border-slate-700/50"
                         >
                           {topic}
                         </span>
@@ -103,7 +103,7 @@ export default function Projects() {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="p-6 pt-0 flex gap-4 text-sm font-medium border-t border-slate-900/50 mt-auto">
+                  <div className="p-6 pt-0 flex gap-4 text-sm font-medium border-t border-slate-800/50 mt-auto">
                     <a
                       href={repo.html_url}
                       target="_blank"

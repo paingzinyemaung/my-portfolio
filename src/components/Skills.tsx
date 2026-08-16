@@ -2,7 +2,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="scroll-mt-24 py-24 bg-slate-950 text-white relative"
+      className="scroll-mt-24 py-24 bg-transparent text-white relative"
     >
       <div className="max-w-4xl mx-auto px-6 text-center">
         <div className="mb-14">
@@ -10,7 +10,7 @@ export default function Skills() {
             <span className="text-teal-400">&lt;</span> My Tech Stack{' '}
             <span className="text-teal-400">/&gt;</span>
           </h2>
-          <p className="text-slate-500 text-sm sm:text-base">
+          <p className="text-slate-400 text-sm sm:text-base">
             Technologies I use to bring ideas to life.
           </p>
         </div>
@@ -29,7 +29,7 @@ export default function Skills() {
           ].map((skill) => (
             <div
               key={skill}
-              className="bg-slate-900/30 border border-slate-900/60 p-4 rounded-xl text-slate-300 hover:text-teal-400 hover:border-teal-500/40 transition-all duration-300 shadow-sm cursor-default"
+              className="bg-slate-900/40 backdrop-blur-md border border-slate-800/80 p-4 rounded-xl text-slate-300 hover:text-teal-400 hover:border-teal-500/50 hover:bg-slate-900/60 transition-all duration-300 shadow-sm cursor-default"
             >
               {skill}
             </div>
