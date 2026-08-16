@@ -33,7 +33,7 @@ export default function Navbar({ theme, setTheme }: NavbarProps) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-50 ${
         isScrolled
           ? 'bg-white/80 border-b border-slate-200/80 backdrop-blur-md py-4 dark:bg-slate-950/80 dark:border-slate-800/80'
           : 'bg-transparent border-b border-transparent py-6'
@@ -55,10 +55,10 @@ export default function Navbar({ theme, setTheme }: NavbarProps) {
               <a
                 key={link.name}
                 href={link.href}
-                className="hover:text-slate-950 dark:hover:text-white transition-colors duration-250 relative group py-1"
+                className="hover:text-slate-950 dark:hover:text-white relative group py-1"
               >
                 {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-px bg-blue-500 dark:bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-px bg-blue-500 dark:bg-blue-400 transition-[width] duration-300 group-hover:w-full"></span>
               </a>
             ))}
           </div>
@@ -66,12 +66,12 @@ export default function Navbar({ theme, setTheme }: NavbarProps) {
           <button
             type="button"
             onClick={() => setTheme((currentTheme) => currentTheme === 'dark' ? 'light' : 'dark')}
-            className="relative h-9 w-9 overflow-hidden rounded-lg border border-slate-200 bg-white/80 text-amber-500 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900/80 dark:text-blue-300 dark:hover:border-blue-400 dark:focus-visible:ring-offset-slate-950"
+            className="relative h-9 w-9 overflow-hidden rounded-lg border border-slate-200 bg-white/80 text-amber-500 shadow-sm transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900/80 dark:text-blue-300 dark:hover:border-blue-400 dark:focus-visible:ring-offset-slate-950"
             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
             aria-pressed={theme === 'dark'}
           >
             <svg
-              className={`absolute inset-0 m-auto h-4 w-4 transition-all duration-300 ${theme === 'dark' ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'}`}
+              className={`absolute inset-0 m-auto h-4 w-4 transition-[opacity,transform] duration-300 ${theme === 'dark' ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'}`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -82,7 +82,7 @@ export default function Navbar({ theme, setTheme }: NavbarProps) {
               <path strokeLinecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
             </svg>
             <svg
-              className={`absolute inset-0 m-auto h-4 w-4 transition-all duration-300 ${theme === 'dark' ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-0 opacity-0'}`}
+              className={`absolute inset-0 m-auto h-4 w-4 transition-[opacity,transform] duration-300 ${theme === 'dark' ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-0 opacity-0'}`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -135,7 +135,7 @@ export default function Navbar({ theme, setTheme }: NavbarProps) {
 
         {/* Mobile Dropdown Menu (အမိုက်စား မှန်ကြည် Dropdown) */}
         <div
-          className={`absolute top-full left-0 w-full bg-white/95 border-b border-slate-200 backdrop-blur-lg transition-all duration-300 origin-top overflow-hidden dark:bg-slate-950/95 dark:border-slate-800 md:hidden ${
+          className={`absolute top-full left-0 w-full bg-white/95 border-b border-slate-200 backdrop-blur-lg transition-[opacity,transform,height,padding] duration-300 origin-top overflow-hidden dark:bg-slate-950/95 dark:border-slate-800 md:hidden ${
             isOpen
               ? 'opacity-100 scale-y-100 py-6'
               : 'opacity-0 scale-y-0 h-0 py-0'
@@ -147,7 +147,7 @@ export default function Navbar({ theme, setTheme }: NavbarProps) {
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)} // link နှိပ်ရင် menu ပိတ်သွားရန်
-                className="hover:text-slate-950 dark:hover:text-white transition-colors w-full text-center py-2"
+                className="hover:text-slate-950 dark:hover:text-white w-full text-center py-2"
               >
                 {link.name}
               </a>

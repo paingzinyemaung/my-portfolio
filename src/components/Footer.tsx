@@ -16,7 +16,7 @@ export default function Footer() {
         <div className="flex gap-6 text-sm font-medium">
           <a
             href="mailto:paingzinyemaung.pgo@gmail.com"
-            className="hover:text-blue-600 dark:hover:text-blue-400 transition"
+            className="hover:text-blue-600 dark:hover:text-blue-400"
           >
             Email
           </a>
@@ -26,7 +26,7 @@ export default function Footer() {
             href="https://github.com/paingzinyemaung"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-blue-600 dark:hover:text-blue-400 transition"
+            className="hover:text-blue-600 dark:hover:text-blue-400"
           >
             GitHub
           </a>
@@ -34,7 +34,7 @@ export default function Footer() {
             href="https://linkedin.com/in/paingzinyemaung"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-blue-600 dark:hover:text-blue-400 transition"
+            className="hover:text-blue-600 dark:hover:text-blue-400"
           >
             LinkedIn
           </a>

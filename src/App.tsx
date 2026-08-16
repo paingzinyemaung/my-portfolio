@@ -18,7 +18,7 @@ function App() {
   }, [theme]);
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-blue-500 selection:text-white transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-blue-500 selection:text-white dark:bg-slate-950 dark:text-slate-100">
       {/* Navigation Menu */}
       <Navbar theme={theme} setTheme={setTheme} />
 

@@ -29,7 +29,6 @@ body {
   background-size: 40px 40px;
   background-attachment: fixed; /* Scroll ဆွဲလျှင် Grid ငြိမ်နေစေရန် */
   color: #ffffff;
-  transition: background-color 300ms ease, color 300ms ease;
 }
 
 /* --- Floating Keyframes (Style Modified) --- */

@@ -26,9 +26,9 @@ export default function About() {
           </div>
 
           {/* Philosophy Card */}
-          <div className="lg:col-span-5 bg-white/70 border border-slate-200 p-6 rounded-2xl backdrop-blur-md relative group transition-all duration-300 hover:-translate-y-2 hover:border-blue-500/40 hover:shadow-2xl hover:shadow-blue-500/10 dark:bg-slate-900/40 dark:border-slate-800/80 dark:hover:border-blue-500/30 dark:hover:shadow-blue-500/5">
+          <div className="lg:col-span-5 bg-white/70 border border-slate-200 p-6 rounded-2xl backdrop-blur-md relative group transition-transform duration-300 hover:-translate-y-2 hover:border-blue-500/40 hover:shadow-2xl hover:shadow-blue-500/10 dark:bg-slate-900/40 dark:border-slate-800/80 dark:hover:border-blue-500/30 dark:hover:shadow-blue-500/5">
             {/* Hover လုပ်လျှင် လင်းလာမည့် Left Indicator Line */}
-            <div className="absolute -left-0.5 top-6 w-1 h-12 bg-blue-500 rounded-r-md group-hover:bg-blue-400 group-hover:h-16 transition-all duration-300"></div>
+            <div className="absolute -left-0.5 top-6 w-1 h-12 bg-blue-500 rounded-r-md group-hover:bg-blue-400 group-hover:h-16 transition-[height] duration-300"></div>
 
             <h3 className="text-xl font-bold text-blue-400 mb-3 font-mono pl-2">
               My Philosophy

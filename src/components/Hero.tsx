@@ -45,7 +45,7 @@ export default function Hero() {
     <section
       ref={sectionRef} // 👈 ဤနေရာတွင် Ref ကို ချိတ်ဆက်ပေးရပါမည်
       id="home"
-      className="relative min-h-screen flex items-center bg-slate-50 text-slate-900 pt-24 pb-16 overflow-hidden transition-colors duration-300 dark:bg-slate-950 dark:text-white"
+      className="relative min-h-screen flex items-center bg-slate-50 text-slate-900 pt-24 pb-16 overflow-hidden dark:bg-slate-950 dark:text-white"
     >
       {/* 1. Grid Background */}
       <div
@@ -77,11 +77,11 @@ export default function Hero() {
           <div className="lg:col-span-7 text-center lg:text-left space-y-6 max-w-2xl mx-auto lg:mx-0">
             {/* Avatar & Badge Section */}
             <div
-              className={`flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-5 mb-10 transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-5 mb-10 transition-[opacity,transform] duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             >
               <div className="relative group/avatar cursor-pointer">
-                <div className="absolute inset-0 rounded-full bg-linear-to-tr from-blue-500 to-teal-400 opacity-40 blur-sm group-hover/avatar:opacity-80 group-hover/avatar:scale-110 transition-all duration-300"></div>
-                <div className="relative w-20 h-20 rounded-full p-0.5 bg-linear-to-tr from-blue-500 to-teal-400 shadow-xl transition-all duration-300 transform group-hover/avatar:scale-110 group-hover/avatar:rotate-6 active:scale-95">
+                <div className="absolute inset-0 rounded-full bg-linear-to-tr from-blue-500 to-teal-400 opacity-40 blur-sm group-hover/avatar:opacity-80 group-hover/avatar:scale-110 transition-[opacity,transform] duration-300"></div>
+                <div className="relative w-20 h-20 rounded-full p-0.5 bg-linear-to-tr from-blue-500 to-teal-400 shadow-xl transition-transform duration-300 transform group-hover/avatar:scale-110 group-hover/avatar:rotate-6 active:scale-95">
                     <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-slate-900">
                     <img
                       src={myPhoto}
@@ -105,7 +105,7 @@ export default function Hero() {
 
             {/* Main Heading Title */}
             <h1
-              className={`text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-slate-900 transition-all duration-1000 delay-150 ease-out transform dark:text-slate-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-slate-900 transition-[opacity,transform] duration-1000 delay-150 ease-out transform dark:text-slate-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             >
               Building Web Apps, <br className="hidden sm:block" />
               <span className="bg-linear-to-r from-blue-400 via-teal-400 to-indigo-400 bg-clip-text text-transparent">
@@ -115,7 +115,7 @@ export default function Hero() {
 
             {/* Description Paragraph */}
             <p
-              className={`text-slate-600 text-base sm:text-lg leading-relaxed font-normal max-w-xl mx-auto lg:mx-0 transition-all duration-1000 delay-300 ease-out transform dark:text-slate-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`text-slate-600 text-base sm:text-lg leading-relaxed font-normal max-w-xl mx-auto lg:mx-0 transition-[opacity,transform] duration-1000 delay-300 ease-out transform dark:text-slate-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             >
               A passionate Full-stack Web Developer specializing in the MERN
               stack and Next.js to craft clean, responsive, and delightful
@@ -124,11 +124,11 @@ export default function Hero() {
 
             {/* Buttons */}
             <div
-              className={`flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2 transition-all duration-1000 delay-450 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2 transition-[opacity,transform] duration-1000 delay-450 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             >
               <a
                 href="#projects"
-                className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-8 py-3 rounded-xl transition-all shadow-md shadow-blue-600/10 text-center"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-8 py-3 rounded-xl shadow-md shadow-blue-600/10 text-center"
               >
                 View Projects
               </a>
@@ -143,7 +143,7 @@ export default function Hero() {
 
           {/* --- ညာဘက်ခြမ်း Column (IDE Windows Mockup) --- */}
           <div
-            className={`lg:col-span-5 w-full max-w-md mx-auto transition-all duration-1000 delay-600 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            className={`lg:col-span-5 w-full max-w-md mx-auto transition-[opacity,transform] duration-1000 delay-600 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
             <div className="w-full bg-white/70 border border-slate-200 rounded-2xl shadow-xl shadow-slate-900/10 backdrop-blur-sm overflow-hidden font-mono text-xs sm:text-sm hover:-translate-y-2 transition-transform duration-300 dark:bg-slate-900/50 dark:border-slate-800/80 dark:shadow-2xl dark:shadow-black/30">
               {/* Window Header */}

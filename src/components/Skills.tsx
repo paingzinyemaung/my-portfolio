@@ -29,7 +29,7 @@ export default function Skills() {
           ].map((skill) => (
             <div
               key={skill}
-              className="bg-white/70 backdrop-blur-md border border-slate-200 p-4 rounded-xl text-slate-700 hover:text-teal-600 hover:border-teal-500/50 hover:bg-white transition-all duration-300 shadow-sm cursor-default dark:bg-slate-900/40 dark:border-slate-800/80 dark:text-slate-300 dark:hover:text-teal-400 dark:hover:bg-slate-900/60"
+              className="bg-white/70 backdrop-blur-md border border-slate-200 p-4 rounded-xl text-slate-700 hover:text-teal-600 hover:border-teal-500/50 hover:bg-white shadow-sm cursor-default dark:bg-slate-900/40 dark:border-slate-800/80 dark:text-slate-300 dark:hover:text-teal-400 dark:hover:bg-slate-900/60"
             >
               {skill}
             </div>
