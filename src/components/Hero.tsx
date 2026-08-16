@@ -28,14 +28,15 @@ export default function Hero() {
     );
 
     // စောင့်ကြည့်မည့် Section ကို Observer ထဲ ထည့်သွင်းခြင်း
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const section = sectionRef.current;
+    if (section) {
+      observer.observe(section);
     }
 
     // Component ပိတ်သွားလျှင် Cleanup ပြန်လုပ်ပေးခြင်း
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (section) {
+        observer.unobserve(section);
       }
     };
   }, []);
@@ -44,11 +45,11 @@ export default function Hero() {
     <section
       ref={sectionRef} // 👈 ဤနေရာတွင် Ref ကို ချိတ်ဆက်ပေးရပါမည်
       id="home"
-      className="relative min-h-screen flex items-center bg-slate-950 text-white pt-24 pb-16 overflow-hidden"
+      className="relative min-h-screen flex items-center bg-slate-50 text-slate-900 pt-24 pb-16 overflow-hidden transition-colors duration-300 dark:bg-slate-950 dark:text-white"
     >
       {/* 1. Grid Background */}
       <div
-        className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff09_1px,transparent_1px),linear-gradient(to_bottom,#ffffff09_1px,transparent_1px)] bg-size-[90px_90px] z-0"
+        className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a0d_1px,transparent_1px),linear-gradient(to_bottom,#0f172a0d_1px,transparent_1px)] bg-size-[90px_90px] z-0 dark:bg-[linear-gradient(to_right,#ffffff09_1px,transparent_1px),linear-gradient(to_bottom,#ffffff09_1px,transparent_1px)]"
         style={{
           WebkitMaskImage:
             'linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%)',
@@ -59,11 +60,11 @@ export default function Hero() {
 
       {/* 2. Floating Background Shapes */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="animate-float-shape-1 absolute top-28 left-10 md:left-24 w-12 h-12 border-2 border-blue-400/40 rounded-xl"></div>
-        <div className="animate-float-shape-2 absolute bottom-24 left-16 w-8 h-8 border border-teal-400/30 rounded-sm rotate-12"></div>
+        <div className="animate-float-shape-1 absolute top-28 left-10 md:left-24 w-12 h-12 border-2 border-blue-500/35 rounded-xl dark:border-blue-400/40"></div>
+        <div className="animate-float-shape-2 absolute bottom-24 left-16 w-8 h-8 border border-teal-500/30 rounded-sm rotate-12 dark:border-teal-400/30"></div>
         <div className="animate-float-shape-3 absolute top-20 left-1/2 w-4 h-4 rounded-full bg-purple-500/30"></div>
-        <div className="animate-float-shape-2 absolute top-40 right-20 lg:right-96 w-6 h-6 border border-purple-400/40 rotate-45"></div>
-        <div className="animate-float-shape-1 absolute bottom-28 right-12 md:right-36 w-16 h-16 border-2 border-teal-400/40 rounded-full"></div>
+        <div className="animate-float-shape-2 absolute top-40 right-20 lg:right-96 w-6 h-6 border border-purple-500/35 rotate-45 dark:border-purple-400/40"></div>
+        <div className="animate-float-shape-1 absolute bottom-28 right-12 md:right-36 w-16 h-16 border-2 border-teal-500/30 rounded-full dark:border-teal-400/40"></div>
       </div>
 
       {/* Ambient Lighting Backdrop */}
@@ -81,7 +82,7 @@ export default function Hero() {
               <div className="relative group/avatar cursor-pointer">
                 <div className="absolute inset-0 rounded-full bg-linear-to-tr from-blue-500 to-teal-400 opacity-40 blur-sm group-hover/avatar:opacity-80 group-hover/avatar:scale-110 transition-all duration-300"></div>
                 <div className="relative w-20 h-20 rounded-full p-0.5 bg-linear-to-tr from-blue-500 to-teal-400 shadow-xl transition-all duration-300 transform group-hover/avatar:scale-110 group-hover/avatar:rotate-6 active:scale-95">
-                  <div className="w-full h-full rounded-full overflow-hidden bg-slate-900">
+                    <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-slate-900">
                     <img
                       src={myPhoto}
                       alt="Paing Zin"
@@ -93,10 +94,10 @@ export default function Hero() {
               </div>
 
               <div className="flex flex-col items-center sm:items-start font-mono">
-                <span className="border border-blue-500/30 bg-blue-500/5 px-3 py-1 rounded-full text-xs font-semibold text-blue-400 tracking-wide mb-1">
+                <span className="border border-blue-200 bg-blue-50 px-3 py-1 rounded-full text-xs font-semibold text-blue-700 tracking-wide mb-1 dark:border-blue-500/30 dark:bg-blue-500/5 dark:text-blue-400">
                   Hello World 👋
                 </span>
-                <span className="text-xs text-slate-500">
+                <span className="text-xs text-slate-500 dark:text-slate-500">
                   Welcome to my space
                 </span>
               </div>
@@ -104,7 +105,7 @@ export default function Hero() {
 
             {/* Main Heading Title */}
             <h1
-              className={`text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-slate-100 transition-all duration-1000 delay-150 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-slate-900 transition-all duration-1000 delay-150 ease-out transform dark:text-slate-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             >
               Building Web Apps, <br className="hidden sm:block" />
               <span className="bg-linear-to-r from-blue-400 via-teal-400 to-indigo-400 bg-clip-text text-transparent">
@@ -114,7 +115,7 @@ export default function Hero() {
 
             {/* Description Paragraph */}
             <p
-              className={`text-slate-400 text-base sm:text-lg leading-relaxed font-normal max-w-xl mx-auto lg:mx-0 transition-all duration-1000 delay-300 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`text-slate-600 text-base sm:text-lg leading-relaxed font-normal max-w-xl mx-auto lg:mx-0 transition-all duration-1000 delay-300 ease-out transform dark:text-slate-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             >
               A passionate Full-stack Web Developer specializing in the MERN
               stack and Next.js to craft clean, responsive, and delightful
@@ -133,7 +134,7 @@ export default function Hero() {
               </a>
               <button
                 disabled
-                className="border border-slate-800/60 bg-slate-900/40 text-slate-500 font-medium px-8 py-3 rounded-xl opacity-50 cursor-not-allowed text-center"
+                className="border border-slate-300 bg-white/60 text-slate-500 font-medium px-8 py-3 rounded-xl opacity-60 cursor-not-allowed text-center dark:border-slate-800/60 dark:bg-slate-900/40"
               >
                 Download CV
               </button>
@@ -144,60 +145,60 @@ export default function Hero() {
           <div
             className={`lg:col-span-5 w-full max-w-md mx-auto transition-all duration-1000 delay-600 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
-            <div className="w-full bg-slate-900/50 border border-slate-800/80 rounded-2xl shadow-2xl backdrop-blur-sm overflow-hidden font-mono text-xs sm:text-sm hover:-translate-y-2 transition-transform duration-300">
+            <div className="w-full bg-white/70 border border-slate-200 rounded-2xl shadow-xl shadow-slate-900/10 backdrop-blur-sm overflow-hidden font-mono text-xs sm:text-sm hover:-translate-y-2 transition-transform duration-300 dark:bg-slate-900/50 dark:border-slate-800/80 dark:shadow-2xl dark:shadow-black/30">
               {/* Window Header */}
-              <div className="bg-slate-950/80 px-4 py-3 flex items-center justify-between border-b border-slate-900">
+              <div className="bg-slate-100/80 px-4 py-3 flex items-center justify-between border-b border-slate-200 dark:bg-slate-950/80 dark:border-slate-900">
                 <div className="flex items-center gap-1.5">
                   <span className="w-3 h-3 rounded-full bg-red-500/70"></span>
                   <span className="w-3 h-3 rounded-full bg-yellow-500/70"></span>
                   <span className="w-3 h-3 rounded-full bg-green-500/70"></span>
                 </div>
-                <span className="text-slate-500 text-xs font-medium">
+                <span className="text-slate-500 text-xs font-medium dark:text-slate-500">
                   developer.tsx
                 </span>
                 <span className="w-4"></span>
               </div>
 
               {/* Code Contents */}
-              <div className="p-5 space-y-2.5 text-left text-slate-300">
+              <div className="p-5 space-y-2.5 text-left text-slate-700 dark:text-slate-300">
                 <div>
                   <span className="text-purple-400">const</span>{' '}
                   <span className="text-blue-400">developer</span> = &#123;
                 </div>
                 <div className="pl-4">
-                  <span className="text-slate-400">name:</span>{' '}
-                  <span className="text-teal-300">'Paing Zin Ye Maung'</span>,
+                  <span className="text-slate-600 dark:text-slate-400">name:</span>{' '}
+                  <span className="text-teal-700 dark:text-teal-300">'Paing Zin Ye Maung'</span>,
                 </div>
                 <div className="pl-4">
-                  <span className="text-slate-400">role:</span>{' '}
-                  <span className="text-teal-300">'Full-Stack Web Dev'</span>,
+                  <span className="text-slate-600 dark:text-slate-400">role:</span>{' '}
+                  <span className="text-teal-700 dark:text-teal-300">'Full-Stack Web Dev'</span>,
                 </div>
                 <div className="pl-4">
-                  <span className="text-slate-400">coreStack:</span>{' '}
-                  <span className="text-slate-400">[</span>
+                  <span className="text-slate-600 dark:text-slate-400">coreStack:</span>{' '}
+                  <span className="text-slate-600 dark:text-slate-400">[</span>
                 </div>
                 <div className="pl-8 text-amber-400">
                   'MongoDB', 'Express', 'React', 'Node.js'
                 </div>
                 <div className="pl-4">
-                  <span className="text-slate-400">],</span>
+                  <span className="text-slate-600 dark:text-slate-400">],</span>
                 </div>
                 <div className="pl-4">
-                  <span className="text-slate-400">framework:</span>{' '}
-                  <span className="text-teal-300">'Next.js'</span>,
+                  <span className="text-slate-600 dark:text-slate-400">framework:</span>{' '}
+                  <span className="text-teal-700 dark:text-teal-300">'Next.js'</span>,
                 </div>
                 <div className="pl-4">
-                  <span className="text-slate-400">uiKit:</span>{' '}
-                  <span className="text-teal-300">'Tailwind CSS v4'</span>
+                  <span className="text-slate-600 dark:text-slate-400">uiKit:</span>{' '}
+                  <span className="text-teal-700 dark:text-teal-300">'Tailwind CSS v4'</span>
                 </div>
                 <div>&#125;;</div>
 
-                <div className="pt-4 text-slate-500">
+                <div className="pt-4 text-slate-500 dark:text-slate-500">
                   // Outputting environment status...
                 </div>
                 <div className="text-emerald-400 flex items-center gap-2">
                   <span>&gt; ready</span>
-                  <span className="text-slate-300">
+                  <span className="text-slate-700 dark:text-slate-300">
                     compiled successfully on port 5173
                   </span>
                 </div>

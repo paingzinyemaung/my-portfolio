@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -6,10 +7,20 @@ import Projects from './components/Projects';
 import Footer from './components/Footer';
 
 function App() {
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme === 'light' ? 'light' : 'dark';
+  });
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
   return (
-    <div className="bg-slate-950 min-h-screen font-sans selection:bg-blue-500 selection:text-white scroll-smooth">
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-blue-500 selection:text-white transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
       {/* Navigation Menu */}
-      <Navbar />
+      <Navbar theme={theme} setTheme={setTheme} />
 
       {/* Main Content Sections */}
       <main>
